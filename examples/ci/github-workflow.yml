@@ -1,0 +1,36 @@
+# Sample reachdiff check for GitHub Actions. Copy to .github/workflows/reachdiff.yml in the sample repository and
+# replace OWNER and FULL_COMMIT_SHA; see README "CI". Repository variables: GP_HOST, GP_CLIENT_ID, GP_CATALOG.
+name: reachdiff
+on: pull_request
+permissions:
+  contents: read
+  pull-requests: write # the comment
+  id-token: write # github-oidc login
+jobs:
+  reachdiff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: 1.16.4
+          terraform_wrapper: false # keeps show -json output clean
+      - name: terraform plan
+        working-directory: terraform
+        env:
+          DATABRICKS_HOST: ${{ vars.GP_HOST }}
+          DATABRICKS_CLIENT_ID: ${{ vars.GP_CLIENT_ID }}
+          DATABRICKS_AUTH_TYPE: github-oidc
+          TF_VAR_catalog: ${{ vars.GP_CATALOG }}
+        run: |
+          terraform init -input=false
+          terraform plan -input=false -out="$RUNNER_TEMP/plan.bin"
+          terraform show -json "$RUNNER_TEMP/plan.bin" > "$RUNNER_TEMP/plan.json"
+      - uses: reachdiff/reachdiff@FULL_COMMIT_SHA
+        with:
+          plan-json: ${{ runner.temp }}/plan.json
+          comment: true
+        env:
+          DATABRICKS_HOST: ${{ vars.GP_HOST }}
+          DATABRICKS_CLIENT_ID: ${{ vars.GP_CLIENT_ID }}
+          DATABRICKS_AUTH_TYPE: github-oidc

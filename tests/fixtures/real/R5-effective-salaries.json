@@ -1,0 +1,14 @@
+{
+  "privilege_assignments": [
+    {
+      "principal": "00000000-0000-4000-8000-000000000002",
+      "privileges": [
+        {
+          "privilege": "READ_METADATA",
+          "inherited_from_type": "CATALOG",
+          "inherited_from_name": "gp_validation"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "tables": [
+    {
+      "full_name": "gp_validation.sales.customers"
+    }
+  ],
+  "next_page_token": "page-1"
+}

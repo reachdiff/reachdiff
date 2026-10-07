@@ -1,0 +1,17 @@
+{
+  "privilege_assignments": [
+    {
+      "principal": "00000000-0000-4000-8000-000000000001",
+      "privileges": [
+        "USE_SCHEMA"
+      ]
+    },
+    {
+      "principal": "gp-pii-readers",
+      "privileges": [
+        "SELECT",
+        "USE_SCHEMA"
+      ]
+    }
+  ]
+}

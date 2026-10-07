@@ -1,0 +1,12 @@
+{
+  "tag_assignments": [
+    {
+      "entity_name": "gp_validation.hr.salaries",
+      "entity_type": "tables",
+      "tag_key": "sensitive",
+      "tag_value": "",
+      "source_type": "TAG_ASSIGNMENT_SOURCE_TYPE_UNSPECIFIED",
+      "inherited": false
+    }
+  ]
+}

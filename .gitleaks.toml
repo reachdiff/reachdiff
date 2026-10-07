@@ -1,0 +1,8 @@
+# gitleaks: the default rules, plus fake test values that look like secrets. Allowlist values here only after
+# confirming they are made up, and say where they come from.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Fake pagination token used as input in tests/test_sanitize.py"
+regexes = ['''^opaque-123456789$''']

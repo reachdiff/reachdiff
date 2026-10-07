@@ -1,0 +1,12 @@
+{
+  "tag_assignments": [
+    {
+      "entity_name": "gp_validation.sales.customers.email",
+      "entity_type": "columns",
+      "tag_key": "pii",
+      "tag_value": "email",
+      "source_type": "TAG_ASSIGNMENT_SOURCE_TYPE_UNSPECIFIED",
+      "inherited": false
+    }
+  ]
+}

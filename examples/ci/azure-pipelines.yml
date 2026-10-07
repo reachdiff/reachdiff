@@ -1,0 +1,43 @@
+# Sample reachdiff check for Azure DevOps. Copy to the sample repository root and replace OWNER, FULL_COMMIT_SHA
+# and GITHUB_CONNECTION; see README "CI". Pipeline variables: GP_HOST, GP_CLIENT_ID, GP_CATALOG. Pull requests run
+# it through a build validation branch policy on main.
+trigger: none
+
+pool:
+  name: Default # the self-hosted agent
+
+resources:
+  repositories:
+    - repository: reachdiff
+      type: github
+      endpoint: GITHUB_CONNECTION # GitHub service connection with read access to reachdiff/reachdiff
+      name: reachdiff/reachdiff
+      ref: FULL_COMMIT_SHA
+
+steps:
+  - checkout: self
+    path: self # explicit paths: a second checkout would otherwise move this one to s/<repo name>
+  - checkout: reachdiff
+    path: reachdiff
+  - bash: |
+      set -euo pipefail
+      terraform init -input=false
+      terraform plan -input=false -var "catalog=$GP_CATALOG" -out="$AGENT_TEMPDIRECTORY/plan.bin"
+      terraform show -json "$AGENT_TEMPDIRECTORY/plan.bin" > "$AGENT_TEMPDIRECTORY/plan.json"
+    displayName: terraform plan
+    workingDirectory: $(Pipeline.Workspace)/self/terraform
+    env:
+      DATABRICKS_HOST: $(GP_HOST)
+      DATABRICKS_CLIENT_ID: $(GP_CLIENT_ID)
+      DATABRICKS_AUTH_TYPE: azure-devops-oidc
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+  - template: ci/azure-pipelines/reachdiff.yml@reachdiff
+    parameters:
+      planJson: $(Agent.TempDirectory)/plan.json
+      reachdiffPath: $(Pipeline.Workspace)/reachdiff
+      host: $(GP_HOST)
+      clientId: $(GP_CLIENT_ID)
+      comment: true
+  - bash: rm -f "$AGENT_TEMPDIRECTORY/plan.bin" "$AGENT_TEMPDIRECTORY/plan.json"
+    displayName: remove the plan
+    condition: always()

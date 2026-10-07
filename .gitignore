@@ -1,0 +1,49 @@
+.DS_Store
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+.databrickscfg
+.databricks/
+*.pem
+*.key
+id_rsa*
+*.pfx
+credentials.json
+service-account*.json
+.npmrc
+.pypirc
+
+# Terraform state, plans and variables (real plans can contain secrets)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+crash.log
+
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Real plans, scans and reports (contain sensitive workspace metadata)
+local/
+
+# Temporary live-session overrides (P6)
+validation/azure/terraform/*_override.tf
+
+# Promotion material (PR, social media drafts): private, never pushed
+promo/
+press/
+social/

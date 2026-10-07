@@ -1,0 +1,78 @@
+# reachdiff steps for Azure DevOps. Include after the steps that write the plan JSON, once per job; see README "CI".
+# The consumer checks out this repository (resources.repositories) and passes its path as reachdiffPath.
+parameters:
+  - name: planJson
+    type: string
+  - name: reachdiffPath
+    type: string
+  - name: mode
+    type: string
+    default: live
+    values: [live, offline]
+  - name: deep
+    type: boolean
+    default: false
+  - name: config
+    type: string
+    default: ''
+  - name: failOn
+    type: string
+    default: ''
+  - name: comment
+    type: boolean
+    default: false
+  - name: allowPublic
+    type: boolean
+    default: false
+  - name: commentKey
+    type: string
+    default: default
+  - name: python
+    type: string
+    default: python3
+  - name: host
+    type: string
+    default: ''
+  - name: clientId
+    type: string
+    default: ''
+  - name: authType
+    type: string
+    default: azure-devops-oidc
+
+steps:
+  - bash: |
+      rc=0
+      bash "$REACHDIFF_PATH/ci/run.sh" || rc=$?
+      echo "##vso[task.setvariable variable=REACHDIFF_EXIT_CODE]$rc"
+    displayName: reachdiff
+    env:
+      PYTHON: ${{ parameters.python }}
+      REACHDIFF_PATH: ${{ parameters.reachdiffPath }}
+      OUT: $(Agent.TempDirectory)/reachdiff
+      PLAN_JSON: ${{ parameters.planJson }}
+      MODE: ${{ parameters.mode }}
+      DEEP: ${{ parameters.deep }}
+      CONFIG: ${{ parameters.config }}
+      FAIL_ON: ${{ parameters.failOn }}
+      DATABRICKS_HOST: ${{ parameters.host }}
+      DATABRICKS_CLIENT_ID: ${{ parameters.clientId }}
+      DATABRICKS_AUTH_TYPE: ${{ parameters.authType }}
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+  - bash: |
+      args=()
+      case "$COMMENT" in true | True) args+=(--comment) ;; esac
+      case "$ALLOW_PUBLIC" in true | True) args+=(--allow-public) ;; esac
+      "$PYTHON" "$REACHDIFF_PATH/ci/publish.py" azure-devops --report "$OUT/report.md" \
+        --exit-code "${REACHDIFF_EXIT_CODE:-3}" --key "$KEY" "${args[@]}"
+    name: reachdiff
+    displayName: reachdiff publish
+    condition: always()
+    env:
+      PYTHON: ${{ parameters.python }}
+      REACHDIFF_PATH: ${{ parameters.reachdiffPath }}
+      OUT: $(Agent.TempDirectory)/reachdiff
+      COMMENT: ${{ parameters.comment }}
+      ALLOW_PUBLIC: ${{ parameters.allowPublic }}
+      KEY: ${{ parameters.commentKey }}
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)

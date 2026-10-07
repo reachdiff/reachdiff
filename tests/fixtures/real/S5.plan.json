@@ -1,0 +1,1039 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.16.4",
+  "reachdiff_fixture": "sanitized",
+  "configuration": {
+    "provider_config": {
+      "databricks": {
+        "name": "databricks",
+        "expressions": {}
+      },
+      "databricks.account": {
+        "name": "databricks",
+        "expressions": {
+          "account_id": {},
+          "host": {
+            "constant_value": "https://accounts.azuredatabricks.net"
+          }
+        }
+      }
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "databricks_grant.this[\"customers/etl\"]",
+      "mode": "managed",
+      "type": "databricks_grant",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog": null,
+          "schema": null,
+          "table": "gp_validation.sales.customers",
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "principal": "00000000-0000-4000-8000-000000000001",
+          "privileges": [
+            "MODIFY",
+            "SELECT"
+          ]
+        },
+        "after": {
+          "catalog": null,
+          "schema": null,
+          "table": "gp_validation.sales.customers",
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "principal": "00000000-0000-4000-8000-000000000001",
+          "privileges": [
+            "MODIFY",
+            "SELECT"
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {
+          "privileges": [
+            false,
+            false
+          ]
+        },
+        "after_sensitive": {
+          "privileges": [
+            false,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "address": "databricks_grants.this[\"catalog\"]",
+      "mode": "managed",
+      "type": "databricks_grants",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog": "gp_validation",
+          "schema": null,
+          "table": null,
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "00000000-0000-4000-8000-000000000001",
+              "privileges": [
+                "USE_CATALOG"
+              ]
+            },
+            {
+              "principal": "00000000-0000-4000-8000-000000000002",
+              "privileges": [
+                "BROWSE",
+                "MANAGE",
+                "USE_CATALOG",
+                "USE_SCHEMA"
+              ]
+            },
+            {
+              "principal": "gp-analysts",
+              "privileges": [
+                "USE_CATALOG"
+              ]
+            },
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "USE_CATALOG"
+              ]
+            }
+          ]
+        },
+        "after": {
+          "catalog": "gp_validation",
+          "schema": null,
+          "table": null,
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "00000000-0000-4000-8000-000000000001",
+              "privileges": [
+                "USE_CATALOG"
+              ]
+            },
+            {
+              "principal": "00000000-0000-4000-8000-000000000002",
+              "privileges": [
+                "BROWSE",
+                "MANAGE",
+                "USE_CATALOG",
+                "USE_SCHEMA"
+              ]
+            },
+            {
+              "principal": "gp-analysts",
+              "privileges": [
+                "USE_CATALOG"
+              ]
+            },
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "USE_CATALOG"
+              ]
+            }
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false,
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        },
+        "after_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false,
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "address": "databricks_grants.this[\"hr\"]",
+      "mode": "managed",
+      "type": "databricks_grants",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog": null,
+          "schema": "gp_validation.hr",
+          "table": null,
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "USE_SCHEMA"
+              ]
+            }
+          ]
+        },
+        "after": {
+          "catalog": null,
+          "schema": "gp_validation.hr",
+          "table": null,
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "USE_SCHEMA"
+              ]
+            }
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        },
+        "after_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "address": "databricks_grants.this[\"orders\"]",
+      "mode": "managed",
+      "type": "databricks_grants",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog": null,
+          "schema": null,
+          "table": "gp_validation.sales.orders",
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "00000000-0000-4000-8000-000000000001",
+              "privileges": [
+                "MODIFY",
+                "SELECT"
+              ]
+            },
+            {
+              "principal": "gp-analysts",
+              "privileges": [
+                "SELECT"
+              ]
+            }
+          ]
+        },
+        "after": {
+          "catalog": null,
+          "schema": null,
+          "table": "gp_validation.sales.orders",
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "00000000-0000-4000-8000-000000000001",
+              "privileges": [
+                "MODIFY",
+                "SELECT"
+              ]
+            },
+            {
+              "principal": "gp-analysts",
+              "privileges": [
+                "SELECT"
+              ]
+            }
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false,
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        },
+        "after_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false,
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "address": "databricks_grants.this[\"salaries\"]",
+      "mode": "managed",
+      "type": "databricks_grants",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog": null,
+          "schema": null,
+          "table": "gp_validation.hr.salaries",
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "SELECT"
+              ]
+            }
+          ]
+        },
+        "after": {
+          "catalog": null,
+          "schema": null,
+          "table": "gp_validation.hr.salaries",
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "SELECT"
+              ]
+            }
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        },
+        "after_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "address": "databricks_grants.this[\"sales\"]",
+      "mode": "managed",
+      "type": "databricks_grants",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog": null,
+          "schema": "gp_validation.sales",
+          "table": null,
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "00000000-0000-4000-8000-000000000001",
+              "privileges": [
+                "USE_SCHEMA"
+              ]
+            },
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "SELECT",
+                "USE_SCHEMA"
+              ]
+            }
+          ]
+        },
+        "after": {
+          "catalog": null,
+          "schema": "gp_validation.sales",
+          "table": null,
+          "volume": null,
+          "function": null,
+          "model": null,
+          "external_location": null,
+          "storage_credential": null,
+          "metastore": null,
+          "share": null,
+          "foreign_connection": null,
+          "credential": null,
+          "grant": [
+            {
+              "principal": "00000000-0000-4000-8000-000000000001",
+              "privileges": [
+                "USE_SCHEMA"
+              ]
+            },
+            {
+              "principal": "gp-pii-readers",
+              "privileges": [
+                "SELECT",
+                "USE_SCHEMA"
+              ]
+            }
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false,
+                false
+              ]
+            }
+          ]
+        },
+        "after_sensitive": {
+          "grant": [
+            {
+              "privileges": [
+                false
+              ]
+            },
+            {
+              "privileges": [
+                false,
+                false
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "address": "databricks_group.this[\"analysts\"]",
+      "mode": "managed",
+      "type": "databricks_group",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "id": "10001",
+          "display_name": "gp-analysts"
+        },
+        "after": {
+          "id": "10001",
+          "display_name": "gp-analysts"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group.this[\"interns\"]",
+      "mode": "managed",
+      "type": "databricks_group",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "id": "10002",
+          "display_name": "gp-interns"
+        },
+        "after": {
+          "id": "10002",
+          "display_name": "gp-interns"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group.this[\"pii_readers\"]",
+      "mode": "managed",
+      "type": "databricks_group",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "id": "10003",
+          "display_name": "gp-pii-readers"
+        },
+        "after": {
+          "id": "10003",
+          "display_name": "gp-pii-readers"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group.this[\"unassigned\"]",
+      "mode": "managed",
+      "type": "databricks_group",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "id": "10004",
+          "display_name": "gp-unassigned"
+        },
+        "after": {
+          "id": "10004",
+          "display_name": "gp-unassigned"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group_member.this[\"analysts/interns\"]",
+      "mode": "managed",
+      "type": "databricks_group_member",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "group_id": "10001",
+          "member_id": "10002"
+        },
+        "after": {
+          "group_id": "10001",
+          "member_id": "10002"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group_member.this[\"analysts/operator\"]",
+      "mode": "managed",
+      "type": "databricks_group_member",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "group_id": "10001",
+          "member_id": "10005"
+        },
+        "after": {
+          "group_id": "10001",
+          "member_id": "10005"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group_member.this[\"interns/etl\"]",
+      "mode": "managed",
+      "type": "databricks_group_member",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "group_id": "10002",
+          "member_id": "10006"
+        },
+        "after": {
+          "group_id": "10002",
+          "member_id": "10006"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group_member.this[\"pii_readers/operator\"]",
+      "mode": "managed",
+      "type": "databricks_group_member",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "group_id": "10003",
+          "member_id": "10005"
+        },
+        "after": {
+          "group_id": "10003",
+          "member_id": "10005"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_group_member.this[\"unassigned/etl\"]",
+      "mode": "managed",
+      "type": "databricks_group_member",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "group_id": "10004",
+          "member_id": "10006"
+        },
+        "after": {
+          "group_id": "10004",
+          "member_id": "10006"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_schema.this[\"hr\"]",
+      "mode": "managed",
+      "type": "databricks_schema",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog_name": "gp_validation",
+          "name": "hr",
+          "owner": "user-1@example.com"
+        },
+        "after": {
+          "catalog_name": "gp_validation",
+          "name": "hr",
+          "owner": "user-1@example.com"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_schema.this[\"sales\"]",
+      "mode": "managed",
+      "type": "databricks_schema",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog_name": "gp_validation",
+          "name": "sales",
+          "owner": "user-1@example.com"
+        },
+        "after": {
+          "catalog_name": "gp_validation",
+          "name": "sales",
+          "owner": "user-1@example.com"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_service_principal.this[\"etl\"]",
+      "mode": "managed",
+      "type": "databricks_service_principal",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "id": "10006",
+          "application_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "after": {
+          "id": "10006",
+          "application_id": "00000000-0000-4000-8000-000000000001"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_service_principal.this[\"scanner\"]",
+      "mode": "managed",
+      "type": "databricks_service_principal",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "id": "10007",
+          "application_id": "00000000-0000-4000-8000-000000000002"
+        },
+        "after": {
+          "id": "10007",
+          "application_id": "00000000-0000-4000-8000-000000000002"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_sql_table.this[\"customers\"]",
+      "mode": "managed",
+      "type": "databricks_sql_table",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog_name": "gp_validation",
+          "schema_name": "sales",
+          "name": "customers",
+          "owner": "user-1@example.com"
+        },
+        "after": {
+          "catalog_name": "gp_validation",
+          "schema_name": "sales",
+          "name": "customers",
+          "owner": "user-1@example.com"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_sql_table.this[\"orders\"]",
+      "mode": "managed",
+      "type": "databricks_sql_table",
+      "name": "this",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "catalog_name": "gp_validation",
+          "schema_name": "sales",
+          "name": "orders",
+          "owner": "user-1@example.com"
+        },
+        "after": {
+          "catalog_name": "gp_validation",
+          "schema_name": "sales",
+          "name": "orders",
+          "owner": "user-1@example.com"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "databricks_sql_table.this[\"salaries\"]",
+      "mode": "managed",
+      "type": "databricks_sql_table",
+      "name": "this",
+      "change": {
+        "actions": [
+          "update"
+        ],
+        "before": {
+          "catalog_name": "gp_validation",
+          "schema_name": "hr",
+          "name": "salaries",
+          "owner": "gp-pii-readers"
+        },
+        "after": {
+          "catalog_name": "gp_validation",
+          "schema_name": "hr",
+          "name": "salaries",
+          "owner": "user-1@example.com"
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "prior_state": {
+    "values": {
+      "root_module": {
+        "resources": [
+          {
+            "address": "data.databricks_user.operator",
+            "mode": "data",
+            "type": "databricks_user",
+            "name": "operator",
+            "values": {
+              "id": "10005",
+              "user_name": "user-1@example.com"
+            },
+            "sensitive_values": {}
+          },
+          {
+            "address": "databricks_group.this[\"analysts\"]",
+            "mode": "managed",
+            "type": "databricks_group",
+            "name": "this",
+            "values": {
+              "id": "10001",
+              "display_name": "gp-analysts"
+            },
+            "sensitive_values": {}
+          },
+          {
+            "address": "databricks_group.this[\"interns\"]",
+            "mode": "managed",
+            "type": "databricks_group",
+            "name": "this",
+            "values": {
+              "id": "10002",
+              "display_name": "gp-interns"
+            },
+            "sensitive_values": {}
+          },
+          {
+            "address": "databricks_group.this[\"pii_readers\"]",
+            "mode": "managed",
+            "type": "databricks_group",
+            "name": "this",
+            "values": {
+              "id": "10003",
+              "display_name": "gp-pii-readers"
+            },
+            "sensitive_values": {}
+          },
+          {
+            "address": "databricks_group.this[\"unassigned\"]",
+            "mode": "managed",
+            "type": "databricks_group",
+            "name": "this",
+            "values": {
+              "id": "10004",
+              "display_name": "gp-unassigned"
+            },
+            "sensitive_values": {}
+          },
+          {
+            "address": "databricks_service_principal.this[\"etl\"]",
+            "mode": "managed",
+            "type": "databricks_service_principal",
+            "name": "this",
+            "values": {
+              "id": "10006",
+              "application_id": "00000000-0000-4000-8000-000000000001"
+            },
+            "sensitive_values": {}
+          },
+          {
+            "address": "databricks_service_principal.this[\"scanner\"]",
+            "mode": "managed",
+            "type": "databricks_service_principal",
+            "name": "this",
+            "values": {
+              "id": "10007",
+              "application_id": "00000000-0000-4000-8000-000000000002"
+            },
+            "sensitive_values": {}
+          }
+        ]
+      }
+    }
+  }
+}

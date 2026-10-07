@@ -1,0 +1,84 @@
+name: reachdiff
+description: Report who gains or loses Unity Catalog access when a Terraform plan is applied.
+branding:
+  icon: shield
+  color: blue
+inputs:
+  plan-json:
+    description: Path to the terraform show -json output.
+    required: true
+  mode:
+    description: live or offline.
+    default: live
+  deep:
+    description: Also read the child tables of changed schemas and catalogs (live only).
+    default: 'false'
+  config:
+    description: reachdiff TOML config.
+    default: ''
+  fail-on:
+    description: block, warn or never. Empty keeps the config's fail_on (default block).
+    default: ''
+  comment:
+    description: Post or update one comment on the pull request.
+    default: 'false'
+  allow-public:
+    description: Write the summary and comment even if the repository is not private.
+    default: 'false'
+  comment-key:
+    description: Keeps separate comments for several plans in one pull request.
+    default: default
+  github-token:
+    description: Token for the comment; used only by the publish step.
+    default: ${{ github.token }}
+outputs:
+  status:
+    description: PASS, WARN, BLOCK or ERROR.
+    value: ${{ steps.publish.outputs.status }}
+  exit-code:
+    description: The exit code the action ends with.
+    value: ${{ steps.publish.outputs.exit-code }}
+  report-path:
+    description: The Markdown report.
+    value: ${{ steps.publish.outputs.report-path }}
+runs:
+  using: composite
+  steps:
+    - id: python
+      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      with:
+        python-version: '3.11'
+        update-environment: false
+    - id: run
+      shell: bash
+      env:
+        PYTHON: ${{ steps.python.outputs.python-path }}
+        REACHDIFF_PATH: ${{ github.action_path }}
+        OUT: ${{ runner.temp }}/reachdiff
+        PLAN_JSON: ${{ inputs.plan-json }}
+        MODE: ${{ inputs.mode }}
+        DEEP: ${{ inputs.deep }}
+        CONFIG: ${{ inputs.config }}
+        FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        rc=0
+        bash "$REACHDIFF_PATH/ci/run.sh" || rc=$?
+        echo "exit-code=$rc" >> "$GITHUB_OUTPUT"
+    - id: publish
+      if: always()
+      shell: bash
+      env:
+        PYTHON: ${{ steps.python.outputs.python-path }}
+        REACHDIFF_PATH: ${{ github.action_path }}
+        OUT: ${{ runner.temp }}/reachdiff
+        GH_TOKEN: ${{ inputs.github-token }}
+        EXIT_CODE: ${{ steps.run.outputs.exit-code }}
+        COMMENT: ${{ inputs.comment }}
+        ALLOW_PUBLIC: ${{ inputs.allow-public }}
+        KEY: ${{ inputs.comment-key }}
+      run: |
+        args=()
+        if [ "$COMMENT" = true ]; then args+=(--comment); fi
+        if [ "$ALLOW_PUBLIC" = true ]; then args+=(--allow-public); fi
+        "$PYTHON" "$REACHDIFF_PATH/ci/publish.py" github --report "$OUT/report.md" --exit-code "${EXIT_CODE:-3}" \
+          --key "$KEY" "${args[@]}"
