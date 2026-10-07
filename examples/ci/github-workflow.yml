@@ -1,5 +1,5 @@
-# Sample reachdiff check for GitHub Actions. Copy to .github/workflows/reachdiff.yml in the sample repository and
-# replace OWNER and FULL_COMMIT_SHA; see README "CI". Repository variables: GP_HOST, GP_CLIENT_ID, GP_CATALOG.
+# Sample reachdiff check for GitHub Actions. Copy to .github/workflows/reachdiff.yml in your repository; see README
+# "CI". Repository variables: GP_HOST, GP_CLIENT_ID, GP_CATALOG.
 name: reachdiff
 on: pull_request
 permissions:
@@ -26,7 +26,7 @@ jobs:
           terraform init -input=false
           terraform plan -input=false -out="$RUNNER_TEMP/plan.bin"
           terraform show -json "$RUNNER_TEMP/plan.bin" > "$RUNNER_TEMP/plan.json"
-      - uses: reachdiff/reachdiff@FULL_COMMIT_SHA
+      - uses: reachdiff/reachdiff@f80e06059ef6d8be015dc2ccbf7702e7fcb90aa4 # v0.9.0
         with:
           plan-json: ${{ runner.temp }}/plan.json
           comment: true

@@ -1,6 +1,6 @@
-# Sample reachdiff check for Azure DevOps. Copy to the sample repository root and replace OWNER, FULL_COMMIT_SHA
-# and GITHUB_CONNECTION; see README "CI". Pipeline variables: GP_HOST, GP_CLIENT_ID, GP_CATALOG. Pull requests run
-# it through a build validation branch policy on main.
+# Sample reachdiff check for Azure DevOps. Copy to your repository root and replace GITHUB_CONNECTION; see README
+# "CI". Pipeline variables: GP_HOST, GP_CLIENT_ID, GP_CATALOG. Pull requests run it through a build validation
+# branch policy on main.
 trigger: none
 
 pool:
@@ -12,7 +12,7 @@ resources:
       type: github
       endpoint: GITHUB_CONNECTION # GitHub service connection with read access to reachdiff/reachdiff
       name: reachdiff/reachdiff
-      ref: FULL_COMMIT_SHA
+      ref: f80e06059ef6d8be015dc2ccbf7702e7fcb90aa4 # v0.9.0
 
 steps:
   - checkout: self

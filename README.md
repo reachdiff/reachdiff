@@ -164,7 +164,7 @@ permissions:
   id-token: write # github-oidc
 steps:
   # ... terraform plan -out "$RUNNER_TEMP/plan.bin" and show -json into "$RUNNER_TEMP/plan.json"
-  - uses: reachdiff/reachdiff@FULL_COMMIT_SHA
+  - uses: reachdiff/reachdiff@f80e06059ef6d8be015dc2ccbf7702e7fcb90aa4 # v0.9.0
     with:
       plan-json: ${{ runner.temp }}/plan.json
       comment: true
@@ -201,7 +201,7 @@ resources:
       type: github
       endpoint: GITHUB_CONNECTION
       name: reachdiff/reachdiff
-      ref: FULL_COMMIT_SHA
+      ref: f80e06059ef6d8be015dc2ccbf7702e7fcb90aa4 # v0.9.0
 steps:
   - checkout: self
     path: self

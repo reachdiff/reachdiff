@@ -288,7 +288,8 @@ and the Azure DevOps REST API or exported logs. gp-scanner keeps the stage chose
 32. Note the reachdiff commit to pin (`git rev-parse origin/main`) and write the sample repositories' files to
     `local/validation/M2-sample/`: `terraform/main.tf` from `examples/ci/terraform/`,
     `.github/workflows/reachdiff.yml` from `examples/ci/github-workflow.yml` and `azure-pipelines.yml` from
-    `examples/ci/azure-pipelines.yml`, with `OWNER`, `FULL_COMMIT_SHA` and `GITHUB_CONNECTION` filled in.
+    `examples/ci/azure-pipelines.yml`, with `GITHUB_CONNECTION` filled in and both `reachdiff/reachdiff` pins set to
+    the noted commit.
 33. GitHub:
     1. Create a private repository (for example `reachdiff-ci-sample`). Its first commit on `main` holds only
        `.github/workflows/reachdiff.yml`.
